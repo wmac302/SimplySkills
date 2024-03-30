@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.World;
 import net.spell_engine.api.spell.Spell;
+import net.spell_engine.api.spell.SpellInfo;
 import net.spell_engine.entity.SpellProjectile;
 import net.spell_engine.internals.SpellHelper;
 import net.sweenus.simplyskills.abilities.*;
@@ -54,6 +55,8 @@ public abstract class SpellProjectileMixin extends ProjectileEntity {
     @Shadow protected abstract void followTarget();
 
     @Shadow public abstract void setVelocity(double x, double y, double z, float speed, float spread, float divergence);
+
+    @Shadow public abstract SpellInfo getSpellInfo();
 
     public SpellProjectileMixin(EntityType<? extends ProjectileEntity> entityType, World world) {
         super(entityType, world);
@@ -109,7 +112,7 @@ public abstract class SpellProjectileMixin extends ProjectileEntity {
                     String[] spellList = new String[]{"simplyskills:lightning_ball_homing", "simplyskills:physical_dagger_homing"};
                     if (HelperMethods.stringContainsAny(this.spellId.toString(), spellList) && this.getOwner() instanceof ServerPlayerEntity player) {
 
-                        SpellHelper.projectileImpact(player, this, entityHitResult.getEntity(), this.getSpell(), context.position(entityHitResult.getPos()));
+                        SpellHelper.projectileImpact(player, this, entityHitResult.getEntity(), this.getSpellInfo(), context.position(entityHitResult.getPos()));
 
                         if (HelperMethods.isUnlocked("simplyskills:wizard",
                                 SkillReferencePosition.wizardSpecialisationStaticDischargeLightningOrbOnHit, player)) {
