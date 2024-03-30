@@ -2,6 +2,7 @@ package net.sweenus.simplyskills.registry;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
@@ -15,31 +16,31 @@ import net.sweenus.simplyskills.items.SkillChronicle;
 
 public class ItemRegistry {
 
-    public static final Item MALEVOLENTMANUSCRIPT = registerItem( "malevolent_manuscript",
-            new MalevolentManuscript( new FabricItemSettings()
+    private static final boolean isProminenceLoaded = FabricLoader.getInstance().isModLoaded("prominent");
+
+    public static final Item MALEVOLENTMANUSCRIPT = isProminenceLoaded ? null : registerItem("malevolent_manuscript",
+            new MalevolentManuscript(new FabricItemSettings()
                     .rarity(Rarity.EPIC)
                     .maxCount(1)
                     .fireproof()));
-    public static final Item GRACIOUSMANUSCRIPT = registerItem( "gracious_manuscript",
-            new GraciousManuscript( new FabricItemSettings()
+    public static final Item GRACIOUSMANUSCRIPT = registerItem("gracious_manuscript",
+            new GraciousManuscript(new FabricItemSettings()
                     .rarity(Rarity.EPIC)
                     .maxCount(1)
                     .fireproof()));
-    public static final Item SKILLCHRONICLE = registerItem( "skill_chronicle",
-            new SkillChronicle( new FabricItemSettings()
+    public static final Item SKILLCHRONICLE = registerItem("skill_chronicle",
+            new SkillChronicle(new FabricItemSettings()
                     .rarity(Rarity.RARE)
                     .maxCount(1)
                     .fireproof()));
 
     private static Item registerItem(String name, Item item) {
+        if (item == null) return null; // Prevent registration if the item is null
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(item));
         return Registry.register(Registries.ITEM, new Identifier(SimplySkills.MOD_ID, name), item);
     }
 
-
     public static void registerItems() {
         SimplySkills.LOGGER.info("Registering Items for " + SimplySkills.MOD_ID);
     }
-
-
 }

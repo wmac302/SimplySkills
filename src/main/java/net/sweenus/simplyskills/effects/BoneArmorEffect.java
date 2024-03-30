@@ -1,5 +1,6 @@
 package net.sweenus.simplyskills.effects;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.effect.StatusEffect;
@@ -33,11 +34,13 @@ public class BoneArmorEffect extends StatusEffect {
     public void onRemoved(LivingEntity entity, AttributeContainer attributes, int amplifier) {
 
         if (amplifier < 1 && entity instanceof PlayerEntity player) {
-            if (AscendancyAbilities.getAscendancyPoints(player) > 29) {
+            if (AscendancyAbilities.getAscendancyPoints(player) > 29 && !FabricLoader.getInstance().isModLoaded("prominent")) {
                 player.addStatusEffect(new StatusEffectInstance(EffectRegistry.UNDYING, 160, 0, false, false, true));
                 player.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 160, 3, false, false, true));
             }
         }
+        if (FabricLoader.getInstance().isModLoaded("prominent"))
+            entity.setAbsorptionAmount( Math.max(0, (entity.getAbsorptionAmount() + 2)));
 
         super.onRemoved(entity, attributes, amplifier);
     }

@@ -4,6 +4,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -49,7 +50,13 @@ public class CyclonicCleaveEffect extends StatusEffect {
                     player.setVelocity(livingEntity.getVelocity().x, 0, livingEntity.getVelocity().z);
                     player.velocityModified = true;
                 }
-                double damage = (HelperMethods.getHighestAttributeValue(player) * damageModifier);
+                double damage;
+                if (FabricLoader.getInstance().isModLoaded("prominent"))
+                    damage = (player.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)
+                            + player.getAttributeValue(EntityAttributes.GENERIC_ATTACK_SPEED))
+                            * damageModifier;
+                else
+                    damage = (HelperMethods.getHighestAttributeValue(player) * damageModifier);
 
                 Box box = HelperMethods.createBox(player, bullrushRadius);
                 for (Entity entities : livingEntity.getWorld().getOtherEntities(livingEntity, box, EntityPredicates.VALID_LIVING_ENTITY)) {

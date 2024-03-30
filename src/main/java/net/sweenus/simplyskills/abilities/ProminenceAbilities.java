@@ -84,7 +84,7 @@ public class ProminenceAbilities {
 
         player.addStatusEffect(new StatusEffectInstance(EffectRegistry.BONEARMOR,
                 400, Math.min(6, count.get()), false, false, true));
-        player.setAbsorptionAmount(Math.min(20, 1 + count.get() * 2));
+        player.setAbsorptionAmount(Math.min(60, player.getAbsorptionAmount() + (6)));
         return true;
     }
     public static void boneArmorEffect(ServerPlayerEntity player) {
@@ -92,7 +92,7 @@ public class ProminenceAbilities {
             StatusEffectInstance boneArmorEffect = player.getStatusEffect(EffectRegistry.BONEARMOR);
             if (boneArmorEffect != null) {
                 HelperMethods.decrementStatusEffect(player, EffectRegistry.BONEARMOR);
-                player.setAbsorptionAmount(Math.min(20, 2 + boneArmorEffect.getAmplifier() * 2));
+                //player.setAbsorptionAmount(Math.min(20, 2 + boneArmorEffect.getAmplifier() * 2));
             }
         }
     }
