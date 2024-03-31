@@ -153,6 +153,25 @@ public abstract class SkillsScreenMixin {
         Identifier parallaxTexture9 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_09.png");
         Identifier parallaxTexture10 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_10.png");
         Identifier parallaxTexture11 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_11.png");
+        Identifier parallaxTexture12 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_12.png");
+        Identifier parallaxTexture13 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_13.png");
+        Identifier parallaxTexture14 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_14.png");
+        Identifier parallaxTexture15 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_15.png");
+        Identifier parallaxTexture16 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_16.png");
+        Identifier parallaxTexture17 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_17.png");
+        Identifier parallaxTexture18 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_18.png");
+        Identifier parallaxTexture19 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_19.png");
+        Identifier parallaxTexture20 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_20.png");
+        Identifier parallaxTexture21 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_21.png");
+        Identifier parallaxTexture22 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_22.png");
+        Identifier parallaxTexture23 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_23.png");
+        Identifier parallaxTexture24 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_24.png");
+        Identifier parallaxTexture25 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_25.png");
+        Identifier parallaxTexture26 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_26.png");
+        Identifier parallaxTexture27 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_27.png");
+        Identifier parallaxTexture28 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_28.png");
+        Identifier parallaxTexture29 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_29.png");
+        Identifier parallaxTexture30 = new Identifier("simplyskills", "textures/backgrounds/decor/planet_30.png");
 
         long currentTime = System.currentTimeMillis();
 
@@ -167,6 +186,25 @@ public abstract class SkillsScreenMixin {
         updateAndDrawAnimatedTexture(context, parallaxTexture9, bounds, currentTime);
         updateAndDrawAnimatedTexture(context, parallaxTexture10, bounds, currentTime);
         updateAndDrawAnimatedTexture(context, parallaxTexture11, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture12, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture13, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture14, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture15, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture16, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture17, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture18, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture19, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture20, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture21, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture22, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture23, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture24, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture25, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture26, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture27, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture28, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture29, bounds, currentTime);
+        updateAndDrawAnimatedTexture(context, parallaxTexture30, bounds, currentTime);
     }
 
     @Unique
@@ -183,8 +221,8 @@ public abstract class SkillsScreenMixin {
             float initialX = bounds.min().x + (float) Math.random() * (bounds.width() - frameWidth);
             float initialY = bounds.min().y + (float) Math.random() * (bounds.height() - frameHeight);
             float scale = (Math.max(0.4f, (float) (Math.random() * 5f)));
-            float speed = Math.min(0.1f, (float) ((Math.random() * 0.1f) / scale));
-            long animationSpeed = Math.max(180, (long) (Math.random() * 200 + (10 * scale)));
+            float speed = Math.min(0.04f, (float) ((Math.random() * 0.08f) / scale));
+            long animationSpeed = Math.max(240, (long) (Math.random() * 300 + (10 * scale)));
             float brightness = Math.min(0.5f, 0.1f + (float) Math.random());
             TextureState newState = new TextureState(initialX, bounds.min().y, speed, scale, animationSpeed, brightness);
             float[] newPosition = updatePlanetPosition(initialX, initialY, bounds, speed, scale);
