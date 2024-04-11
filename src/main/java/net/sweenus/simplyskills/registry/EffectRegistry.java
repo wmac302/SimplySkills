@@ -89,7 +89,7 @@ public class EffectRegistry {
     public static StatusEffect STEALTH= new StealthEffect(StatusEffectCategory.BENEFICIAL, 3124687)
             .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
                     "0e7a848f-46db-4e12-9d4a-40a5f24683c3",
-                    -0.40,
+                    0.0,
                     EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
     public static StatusEffect MIGHT= new MightEffect(StatusEffectCategory.BENEFICIAL, 3124687)
             .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE,
